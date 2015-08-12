@@ -26,7 +26,9 @@ reg = lambda * 0.5 * ones(1, size(theta,1)-1) * theta(2:size(theta,1)).^2
 
 J = ( reg - costPos - costNeg )/m;
 
-grad = X' * (h - y) / m;
+grad = (X' * (h - y) + lambda*theta) / m ;
+
+grad(1,:) = X(:,1)'*(h-y)/m; 
 
 % =============================================================
 
